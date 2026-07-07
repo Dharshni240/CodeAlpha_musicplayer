@@ -254,7 +254,7 @@ body{
 
 .playlist ul{
     list-style:none;
-    max-height:180px;
+    height:100px;
     overflow-y:auto;
     padding-right:6px;
 }
