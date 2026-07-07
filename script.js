@@ -73,7 +73,11 @@ let isRepeat = false;
 
 function loadSong(index){
 
+    audio.pause();
+
     audio.src = songs[index].src;
+
+    audio.load();
 
     title.textContent = songs[index].title;
 
@@ -82,7 +86,6 @@ function loadSong(index){
     cover.src = songs[index].cover;
 
 }
-
 loadSong(currentSong);
 
 // ==========================
@@ -199,11 +202,27 @@ playBtn.addEventListener("click",()=>{
 
 function nextSong(){
 
-    currentSong++;
+    if(isShuffle){
 
-    if(currentSong >= songs.length){
+        let random;
 
-        currentSong = 0;
+        do{
+
+            random = Math.floor(Math.random() * songs.length);
+
+        }while(random === currentSong);
+
+        currentSong = random;
+
+    }else{
+
+        currentSong++;
+
+        if(currentSong >= songs.length){
+
+            currentSong = 0;
+
+        }
 
     }
 
@@ -337,34 +356,10 @@ repeatBtn.addEventListener("click", () => {
 // ==========================
 
 audio.addEventListener("ended", () => {
-
-    if (isRepeat) return;
-
-    if (isShuffle) {
-
-        let randomSong;
-
-        do {
-            randomSong = Math.floor(Math.random() * songs.length);
-        } while (randomSong === currentSong && songs.length > 1);
-
-        currentSong = randomSong;
-
-    } else {
-
-        currentSong++;
-
-        if (currentSong >= songs.length) {
-            currentSong = 0;
-        }
-
-    }
-
-    loadSong(currentSong);
-    updatePlaylist();
-    playSong();
-
+    nextSong();
 });
+
+        
 
 // ==========================
 // KEYBOARD SHORTCUTS
@@ -400,4 +395,4 @@ document.addEventListener("keydown", (e) => {
 
 updatePlaylist();
 
-updatePlaylist();
+
