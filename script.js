@@ -323,16 +323,15 @@ audio.volume = 1;
 
 shuffleBtn.addEventListener("click", () => {
 
-    alert("Shuffle button clicked!");
-
     isShuffle = !isShuffle;
 
     if (isShuffle) {
-        shuffleBtn.style.color = "#00e5ff";
+        shuffleBtn.style.background = "#00e5ff";
+        shuffleBtn.style.color = "#111827";
     } else {
+        shuffleBtn.style.background = "";
         shuffleBtn.style.color = "#ffffff";
     }
-
 });
 // ==========================
 // REPEAT
