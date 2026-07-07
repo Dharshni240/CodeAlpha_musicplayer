@@ -323,6 +323,8 @@ audio.volume = 1;
 
 shuffleBtn.addEventListener("click", () => {
 
+    alert("Shuffle button clicked!");
+
     isShuffle = !isShuffle;
 
     if (isShuffle) {
@@ -332,7 +334,6 @@ shuffleBtn.addEventListener("click", () => {
     }
 
 });
-
 // ==========================
 // REPEAT
 // ==========================
